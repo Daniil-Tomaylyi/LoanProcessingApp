@@ -180,13 +180,13 @@ section {
 }
 .search-section select,
 .search-section input {
-    width: 100%; /* Растягиваем поля на всю доступную ширину */
+    width: 100%;
     padding: 10px;
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    height: 40px; /* Одинаковая высота */
-    box-sizing: border-box; /* Учитываем padding в ширине */
+    height: 40px;
+    box-sizing: border-box;
 }
 
 .search-section label {

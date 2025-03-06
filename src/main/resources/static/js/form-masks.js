@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     function formatPhone(input) {
-        let value = input.value.replace(/\D/g, ""); // Удаляем всё, кроме цифр
+        let value = input.value.replace(/\D/g, "");
 
         value = value.startsWith("8") ? "7" + value.slice(1) : value.startsWith("7") ? value : "7" + value;
 
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function formatPassport(input) {
-        let value = input.value.replace(/\D/g, "").slice(0, 10); // Убираем всё, кроме цифр, ограничиваем длину
+        let value = input.value.replace(/\D/g, "").slice(0, 10);
 
         if (value.length > 8) {
             value = value.slice(0, 2) + "-" + value.slice(2, 4) + "-" + value.slice(4);
