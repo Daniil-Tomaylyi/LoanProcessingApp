@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список клиентов</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<header>
+    <h1>Список клиентов</h1>
+</header>
+<main class="content">
+    <section class="search-section">
+        <form action="/clients/search" method="GET" class="form-container search-form">
+            <div class="form-group">
+                <select id="search-category" name="category">
+                    <option value="name">ФИО</option>
+                    <option value="phone">Телефон</option>
+                    <option value="passport">Паспорт</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="text" id="search-query" name="query" placeholder="Введите данные для поиска">
+            </div>
+            <div class="form-buttons">
+                <button type="submit" name="action" value="search">Поиск</button>
+                <button type="submit" name="action" value="reset">Сброс</button>
+            </div>
+        </form>
+    </section>
+    <section class="container">
+        <table class="styled-table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>ФИО</th>
+                <th>Телефон</th>
+                <th>Паспорт</th>
+                <th>Адрес</th>
+                <th>Место работы</th>
+                <th>Должность</th>
+                <th>Семейное положение</th>
+                <th>Желаемая сумма кредита</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Цикл по клиентам -->
+            <tr th:each="person : ${persons}">
+                <td th:text="${person.id}">ID</td>
+                <td th:text="${person.lastName} + ' ' + ${person.firstName} + ' ' + ${person.middleName}">ФИО</td>
+                <td th:text="${person.phone}">Телефон</td>
+                <td th:text="${person.passportNumber}">Паспорт</td>
+                <td th:text="${person.address}">Адрес</td>
+                <td th:text="${person.companyName}">Место работы</td>
+                <td th:text="${person.positionJob}">Должность</td>
+                <td th:text="${person.maritalStatus}">Семейное положение</td>
+                <td th:text="${person.desiredLoanAmount}">Желаемая сумма кредита</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+</body>
+</html>

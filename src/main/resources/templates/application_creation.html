@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Оформить Заявку на кредит</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <script src="/js/form-masks.js"></script>
+</head>
+<body>
+<h1>Оформить заявку на кредит</h1>
+<div class="form-container">
+    <form th:method="POST" th:action="@{/credit/apply}" th:object="${person}">
+        <div class="form-group">
+            <label for="lastName">Фамилия:</label>
+            <input type="text" th:field="*{lastName}" id="lastName" placeholder="Введите фамилию" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="firstName">Имя:</label>
+            <input type="text" th:field="*{firstName}" id="firstName" placeholder="Введите имя" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="middleName">Отчество:</label>
+            <input type="text" th:field="*{middleName}" id="middleName" placeholder="Введите отчество"/>
+        </div>
+
+        <div class="form-group">
+            <label for="passportNumber">Паспорт:</label>
+            <input type="text" th:field="*{passportNumber}" id="passportNumber" placeholder="Введите паспортные данные. Формат паспорта: XX-XX-XXXXXX" required/>
+        </div>
+        <div class="form-group">
+            <label for="maritalStatus">Семейное положение:</label>
+            <select th:field="*{maritalStatus}" id="maritalStatus" required>
+                <option value="" disabled selected>Выберите семейное положение</option>
+                <option value="Не женат/не замужем">Не женат/не замужем</option>
+                <option value="Женат/замужем">Женат/замужем</option>
+                <option value="Разведен/разведена">Разведен/разведена</option>
+                <option value="Вдовец/вдова">Вдовец/вдова</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="address">Адрес прописки:</label>
+            <input type="text" th:field="*{address}" id="address" placeholder="Введите адрес" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Телефон:</label>
+            <input type="tel" th:field="*{phone}" id="phone" placeholder="Введите номер телефона" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="companyName">Название организации:</label>
+            <input type="text" th:field="*{companyName}" id="companyName" placeholder="Введите название компании" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="positionJob">Должность:</label>
+            <input type="text" th:field="*{positionJob}" id="positionJob" placeholder="Введите должность" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="workPeriod">Стаж:</label>
+            <input type="text" th:field="*{workPeriod}" id="workPeriod" placeholder="Введите стаж" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="desiredLoanAmount">Сумма кредита:</label>
+            <input type="number" th:field="*{desiredLoanAmount}" id="desiredLoanAmount" placeholder="Введите сумму кредита" required/>
+        </div>
+
+        <button type="submit">Отправить заявку</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Решение по кредиту</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<div class="container">
+    <h2>Решение по вашему кредиту</h2>
+    <p>Статус заявки: <strong th:text="${creditDecision.status}"></strong></p>
+    <div th:switch="${creditDecision.status}">
+        <div th:case="'Одобрено'">
+            <p>Одобренная сумма: <strong
+                    th:text="${creditDecision.approvedAmount}"></strong> руб.</p>
+            <p>Срок кредита: <strong th:text="${creditDecision.term}"></strong> месяцев</p>
+            <a th:href="@{/credit/contract/{id}(id=${creditDecision.id})}">
+                <button type="button">Перейти к подписанию договора</button>
+            </a>
+        </div>
+        <div th:case="'Отказ'">
+            <p>К сожалению, заявка была отклонена.</p>
+            <a th:href="@{/credit/new}">
+                <button type="button">Оформить новую заявку</button>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

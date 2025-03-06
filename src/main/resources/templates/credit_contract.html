@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Подписание договора</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<div class="container">
+    <h2>Подпишите договор по кредиту</h2>
+    <p>ФИО: <span
+            th:text="${contract.person.lastName + ' ' + contract.person.firstName + ' ' + contract.person.middleName}"></span>
+    </p>
+    <p>Паспорт: <span th:text="${contract.person.passportNumber}"></span></p>
+    <p>Семейное положение: <span th:text="${contract.person.maritalStatus}"></span></p>
+    <p>Адрес прописки: <span th:text="${contract.person.address}"></span></p>
+    <p>Контактный телефон: <span th:text="${contract.person.phone}"></span></p>
+    <p>Сумма кредита: <span th:text="${contract.approvedAmount}"></span> руб.</p>
+    <p>Срок кредита: <span th:text="${contract.term}"></span> месяцев</p>
+    <form th:action="@{/credit/contract/sign}" method="post">
+        <input type="hidden" name="contractId" th:value="${contract.id}">
+        <button type="submit">Подписать договор</button>
+    </form>
+</div>
+</body>
+</html>
